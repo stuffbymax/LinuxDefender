@@ -4,7 +4,7 @@
 DIRECTORIES=("/home" "/etc" "/var" "/usr" "/tmp" "/opt" "/srv")
 
 # Define known malware signatures
-SIGNATURES=("malware_signature_1" "malware_signature_2" "eicar_test_file.com" "FakeVirus.bat" "Pseudovirus" "Linux.Rst-B" "Phalanx" "Lupper" "Adore" "Kaiten" "Linux.Backdoor.Linux.Ebury" "Linux.Darlloz" "Linux.Encoder")
+SIGNATURES=("eicar_test_file.com" "Linux.Rst-B" "Phalanx" "Lupper" "Adore" "Kaiten" "Linux.Backdoor.Linux.Ebury" "Linux.Darlloz" "Linux.Encoder")
 
 
 
