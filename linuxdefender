@@ -7,6 +7,7 @@ DIRECTORIES=("/home" "/etc" "/var" "/usr" "/tmp" "/opt" "/srv")
 SIGNATURES=("malware_signature_1" "malware_signature_2" "eicar_test_file.com" "FakeVirus.bat" "Pseudovirus" "Linux.Rst-B" "Phalanx" "Lupper" "Adore" "Kaiten" "Linux.Backdoor.Linux.Ebury" "Linux.Darlloz" "Linux.Encoder")
 
 
+
 # Log file for scan results
 LOGFILE="/var/log/antivirus_scan.log"
 
@@ -14,27 +15,11 @@ LOGFILE="/var/log/antivirus_scan.log"
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Function to check if the file contains a null byte
-contains_null_byte() {
-    local file="$1"
-    if grep -q -U $'\x00' "$file"; then
-        return 0  # File contains a null byte
-    else
-        return 1  # File does not contain a null byte
-    fi
-}
-
 # Function to scan files
 scan_file() {
     local file="$1"
     local filename=$(basename "$file")  # Extract filename
     local found=0
-
-    # Check if the file contains a null byte
-    if contains_null_byte "$file"; then
-        echo "Skipping binary file (contains null byte): $file"
-        return
-    fi
 
     # Check if the file is a binary file
     if [[ $(file -b --mime-type "$file" 2>/dev/null) == "application/octet-stream" ]]; then
